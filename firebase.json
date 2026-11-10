@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "target": "lucky68",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "README.md",
+      "DESIGN.md",
+      "PRODUCT.md",
+      "docs/**",
+      ".github/**",
+      ".impeccable/**",
+      "lucky68-gallery/**",
+      "**/node_modules/**",
+      ".git/**"
+    ]
+  }
+}

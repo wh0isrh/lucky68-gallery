@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "single-howl-302901"
+  },
+  "targets": {
+    "single-howl-302901": {
+      "hosting": {
+        "lucky68": [
+          "dongsheng-services"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
