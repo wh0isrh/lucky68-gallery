@@ -2,6 +2,9 @@
   "hosting": {
     "target": "lucky68",
     "public": ".",
+    "i18n": {
+      "root": "localized-files"
+    },
     "ignore": [
       "firebase.json",
       ".firebaserc",

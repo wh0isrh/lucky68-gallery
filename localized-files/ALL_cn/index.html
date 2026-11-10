@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucky68</title>
+</head>
+<body>
+  <p><a href="language-picker.html?lang=zh">选择语言以打开 Lucky68 图册</a></p>
+  <script>
+    let saved = '';
+    try { saved = localStorage.getItem('lucky68-language-choice') || (localStorage.getItem('lucky68-language') === 'zh' ? 'zh' : ''); } catch {}
+    location.replace(saved ? `catalog.html?lang=${saved}` : 'language-picker.html?lang=zh');
+  </script>
+</body>
+</html>

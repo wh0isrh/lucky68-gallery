@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4f0">
+  <title>Choose a language — Lucky68</title>
+  <style>
+    :root{color-scheme:light;--paper:#f5f4f0;--ink:#171816;--graphite:#595b57;--muted:#6d706b;--line:#d9d9d3;--navy:#101b38;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}html{min-height:100%;background:var(--paper)}body{min-height:100vh;min-height:100svh;margin:0;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}button{font:inherit}.screen{min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto 1fr;padding:clamp(22px,4vw,54px) clamp(22px,7vw,100px) clamp(26px,5vw,64px)}.topbar{width:min(100%,1280px);margin:0 auto;display:flex;align-items:center;justify-content:space-between}.wordmark{color:var(--ink);font-size:18px;font-weight:750;letter-spacing:-.065em}.top-note{color:var(--muted);font-size:12px;font-weight:650;letter-spacing:.15em;text-transform:uppercase}.content{width:min(100%,880px);margin:auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 0}.title{margin:0;color:var(--ink);font-family:"Iowan Old Style","Baskerville","Palatino Linotype",Georgia,serif;font-size:clamp(38px,6vw,68px);font-weight:500;letter-spacing:-.035em;line-height:1.05}.title-zh{display:block;margin-top:9px;font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:.56em;letter-spacing:.02em}.suggestion{min-height:20px;margin:19px 0 0;color:var(--graphite);font-size:13px;line-height:1.6}.choices{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:45px}.choice{position:relative;min-height:192px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:24px 26px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.55);color:var(--ink);text-align:left;cursor:pointer;transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease}.choice:hover{transform:translateY(-2px);border-color:#aeb2b8;background:#fff}.choice:focus-visible{outline:3px solid #72809f;outline-offset:4px}.choice.is-suggested{border-color:var(--navy);background:var(--navy);color:#fff}.choice.is-suggested:hover{border-color:#263756;background:#172442}.choice-label{font-size:clamp(25px,3vw,34px);font-weight:600;letter-spacing:-.04em;line-height:1.08}.choice-native{color:var(--muted);font-size:13px;line-height:1.4}.is-suggested .choice-native{color:#d8ddeb}.suggested-tag{position:absolute;top:20px;right:21px;padding:5px 8px;border:1px solid #fff;border-radius:999px;background:#fff;color:var(--navy);font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}.is-suggested .suggested-tag{border-color:#fff;background:#fff;color:var(--navy)}.choice:not(.is-suggested) .suggested-tag{display:none}.bottom-note{margin:23px 0 0;color:var(--muted);font-size:13px;line-height:1.5}.no-script{position:absolute;inset:auto 20px 14px;text-align:center;font-size:12px}@media(max-width:620px){.screen{padding:23px 20px 30px}.content{padding:44px 0}.title{font-size:42px}.choices{grid-template-columns:1fr;gap:11px;margin-top:30px}.choice{min-height:120px;padding:19px 20px}.suggested-tag{top:17px;right:16px}.bottom-note{max-width:35ch}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <header class="topbar"><a class="wordmark" href="./" aria-label="Lucky68">Lucky68</a><span class="top-note">Language · 语言</span></header>
+    <main class="content">
+      <h1 class="title">Choose a language<span class="title-zh" lang="zh-CN">选择浏览语言</span></h1>
+      <p class="suggestion" id="suggestion">Suggested for this visit · 根据当前访问地区推荐</p>
+      <div class="choices" role="group" aria-label="Choose a language / 选择语言">
+        <button class="choice" type="button" data-language="en" aria-label="Continue in English">
+          <span class="suggested-tag" aria-hidden="true">Suggested · 推荐</span>
+          <span class="choice-label">English</span>
+          <span class="choice-native">Browse the catalogue in English</span>
+        </button>
+        <button class="choice" type="button" data-language="zh" aria-label="以简体中文继续">
+          <span class="suggested-tag" aria-hidden="true">Suggested · 推荐</span>
+          <span class="choice-label" lang="zh-CN">简体中文</span>
+          <span class="choice-native" lang="zh-CN">以简体中文浏览图册</span>
+        </button>
+      </div>
+      <p class="bottom-note">You can change languages at any time · 随时可以切换语言</p>
+    </main>
+  </div>
+  <noscript><p class="no-script">Enable JavaScript to choose a language / 请启用 JavaScript 以选择语言</p></noscript>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const suggested = params.get('lang') === 'zh' ? 'zh' : 'en';
+    document.querySelector(`.choice[data-language="${suggested}"]`).classList.add('is-suggested');
+    document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => {
+      const language = button.dataset.language;
+      try {
+        localStorage.setItem('lucky68-language-choice', language);
+        localStorage.setItem('lucky68-language', language);
+      } catch {}
+      location.replace(`catalog.html?lang=${language}`);
+    }));
+  </script>
+</body>
+</html>
