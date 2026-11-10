@@ -9,7 +9,7 @@ A public bilingual catalogue for visitors who browse product albums and open the
 - Warm chalk canvas with restrained ink, graphite labels, cool gray dividers, and navy interaction states.
 - Compact Lucky68 masthead, English / 中文 toggle, short intro, collection totals, and horizontally scrollable brand index.
 - Sticky search, brand filter, and sort controls directly above the catalogue.
-- Brand sections use locally stored logos and bilingual names with album and photo counts.
+- Brand sections use locally stored logos and bilingual names with album and photo counts. Titles containing `T N F` are grouped under The North Face.
 - Album covers and expanded photo thumbnails use `object-fit: contain` so garments remain fully visible.
 - Four-column desktop browsing adapts to two columns on mobile. Reduced-motion preferences disable transitions and smooth scrolling.
 
